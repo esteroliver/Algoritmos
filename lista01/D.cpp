@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -7,8 +8,8 @@ int main(){
     cin >> n;
     double soma = 0;
     for (int i = 1; i<=n; i++){
-        soma = soma + (1/n);
+        soma = soma + (1.0/i);
     }
-    cout << soma;
+    cout << fixed << setprecision(4) << soma;
     return 0;
 }
