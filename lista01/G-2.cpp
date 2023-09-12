@@ -6,18 +6,14 @@ using namespace std;
 int main(){
     int vol, num;
     cin >> vol >> num;
-    int voluntarios_v[num];
     int voluntarios_g[vol];
     for (int i = 0; i<vol; i++){
-        if (i < num) cin >> voluntarios_v[i];
         voluntarios_g[i] = i+1; 
     }
-    for (int j = 0; j<vol; j++){
-        for (int h = 0; h<num; h++){
-            if (voluntarios_v[h] == voluntarios_g[j]){
-                voluntarios_g[j] = 0;
-            }
-        }
+    int x;
+    for (int j = 0; j < num; j++){
+        cin >> x;
+        voluntarios_g[x-1] = 0;
     }
     int soma = 0;
     for (int m = 0; m<vol; m++){
