@@ -1,6 +1,6 @@
 #ifndef __LISTA_LIGADA__
 #define __LISTA_LIGADA__
-#include <iostream>
+
 class set{
     private:
         struct no_int{
