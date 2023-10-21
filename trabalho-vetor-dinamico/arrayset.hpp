@@ -35,9 +35,9 @@ class array_set{
         }
 
         bool inserir_em(unsigned int index, int valor){
-            if (index <= tamanho_ && !encontrar(valor)){
-                for (int i = 0; i < index; i++){
-                    data[i] = data[i+1];
+            if (index < tamanho_ && !encontrar(valor)){
+                for (int i = tamanho_; i > index; i--){
+                    data[i] = data[i-1];
                 }
                 data[index] = valor;
                 tamanho_++;
@@ -79,11 +79,12 @@ class array_set{
             tamanho_++; 
         }
         bool apagar_final(){
-            delete data[tamanho_-1];
             tamanho_--;
         }
         bool apagar_inicio(){
-            delete data[0];
+            for(int i = 0; i < tamanho_-1; i++){
+                data[i] = data[i+1];
+            }
             tamanho_--;
         }
         int final(){
@@ -102,6 +103,7 @@ class array_set{
                     return true;
                 }
             }
+            return false;
         }
         bool encontrar(int valor){
             for (int i = 0; i<tamanho_; i++){
