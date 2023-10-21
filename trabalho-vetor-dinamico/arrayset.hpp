@@ -71,17 +71,42 @@ class array_set{
             delete data[0];
             tamanho_--;
         }
-        int final(){}
-        int inicio(){}
-        bool remover(int valor){}
+        int final(){
+            return data[tamanho_-1];
+        }
+        int inicio(){
+            return data[0];
+        }
+        bool remover(int valor){
+            for(int i = 0; i < tamanho_; i++){
+                if (valor == data[i]){
+                    for(int j = i; j <tamanho_-1; j++){
+                        data[j] = data[j+1];
+                    }
+                    tamanho_--;
+                    return true;
+                }
+        }
         bool encontrar(int valor){
             for (int i = 0; i<tamanho_; i++){
                 if (valor == this->data[i]) return true;
             }
             return false;
         }
-        int contar(int valor){}
-        int soma(){}
+        int contar(int valor){
+            int quant = 0;
+            for (int i = 0; i <tamanho_; i++){
+                if(encontrar(valor)) quant++;
+            }
+            return quant;
+        }
+        int soma(){
+            int soma = 0;
+            for (int i = 0; i < tamanho_; i++){
+                soma += data[i];
+            }
+            return soma;
+        }
 };
 
 #endif // __ARRAY_SET__
