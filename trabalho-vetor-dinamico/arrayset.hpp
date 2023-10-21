@@ -41,7 +41,7 @@ class array_set{
 
         }
         int get_em(unsigned int index){
-
+            return data[index];
         }
 
         void limpar(){
@@ -63,8 +63,14 @@ class array_set{
             data[0] = valor;
             tamanho_++; 
         }
-        bool apagar_final(){}
-        bool apagar_inicio(){}
+        bool apagar_final(){
+            delete data[tamanho_-1];
+            tamanho_--;
+        }
+        bool apagar_inicio(){
+            delete data[0];
+            tamanho_--;
+        }
         int final(){}
         int inicio(){}
         bool remover(int valor){}
