@@ -35,13 +35,28 @@ class array_set{
         }
 
         bool inserir_em(unsigned int index, int valor){
-
+            if (index <= tamanho_ && !encontrar(valor)){
+                for (int i = 0; i < index; i++){
+                    data[i] = data[i+1];
+                }
+                data[index] = valor;
+                tamanho_++;
+                return true;
+            }
+            return false;
         }
         bool remover_em(unsigned int index){
-
+            if (index <= tamanho_){
+                for (int i = index; i < tamanho_; i++){
+                    data[i] = data[i+1];
+                }
+                return true;
+            }
+            return false;
         }
         int get_em(unsigned int index){
-            return data[index];
+            if (encontrar(data[index])) return data[index];
+            else return -1;
         }
 
         void limpar(){
@@ -86,6 +101,7 @@ class array_set{
                     tamanho_--;
                     return true;
                 }
+            }
         }
         bool encontrar(int valor){
             for (int i = 0; i<tamanho_; i++){
