@@ -46,7 +46,7 @@ class array_set{
             return false;
         }
         bool remover_em(unsigned int index){
-            if (index <= tamanho_){
+            if (index < tamanho_){
                 for (int i = index; i < tamanho_; i++){
                     data[i] = data[i+1];
                 }
@@ -55,8 +55,8 @@ class array_set{
             return false;
         }
         int get_em(unsigned int index){
-            if (encontrar(data[index])) return data[index];
-            else return -1;
+            if (index < tamanho_) return data[index];
+            return -1;
         }
 
         void limpar(){
@@ -79,13 +79,21 @@ class array_set{
             tamanho_++; 
         }
         bool apagar_final(){
-            tamanho_--;
+            if (tamanho > 0){
+                tamanho_--;
+                return true;
+            }
+            return false;
         }
         bool apagar_inicio(){
-            for(int i = 0; i < tamanho_-1; i++){
-                data[i] = data[i+1];
+            if (tamanho > 0){
+                for(int i = 0; i < tamanho_-1; i++){
+                    data[i] = data[i+1];
+                }
+                tamanho_--;
+                return true;
             }
-            tamanho_--;
+            return false;
         }
         int final(){
             return data[tamanho_-1];
@@ -112,11 +120,8 @@ class array_set{
             return false;
         }
         int contar(int valor){
-            int quant = 0;
-            for (int i = 0; i <tamanho_; i++){
-                if(encontrar(valor)) quant++;
-            }
-            return quant;
+            if (encontrar(valor)) return 1;
+            else return 0;
         }
         int soma(){
             int soma = 0;
