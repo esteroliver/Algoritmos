@@ -79,14 +79,14 @@ class array_set{
             tamanho_++; 
         }
         bool apagar_final(){
-            if (tamanho > 0){
+            if (tamanho_ > 0){
                 tamanho_--;
                 return true;
             }
             return false;
         }
         bool apagar_inicio(){
-            if (tamanho > 0){
+            if (tamanho_ > 0){
                 for(int i = 0; i < tamanho_-1; i++){
                     data[i] = data[i+1];
                 }

@@ -5,24 +5,50 @@ using namespace std;
 
 int main(){
     array_set lista;
-    lista.inserir_inicio(1);
-    lista.inserir_inicio(2);
-    lista.inserir_inicio(3);
-    lista.inserir_final(10);
-    cout << lista.inserir_em(1, 5) << endl;
-    int tamanho = lista.tamanho();
-    for (int i = 0; i < tamanho; i++){
+    for (int i = 1; i <= 10; i++) lista.inserir_final(i);
+
+    cout << "LISTA:\n";
+    for (unsigned int i = 0; i < lista.tamanho(); i++){
         cout << lista.get_em(i) << " ";
     }
-    cout << endl;
-    int soma = lista.soma();
-    cout << soma << endl;
-    cout << "Primeiro elemento: " << lista.inicio() << endl;
-    cout << "Último elemento: " << lista.final() << endl;
+    cout << "\n" <<"TAMANHO DA LISTA: "<< lista.tamanho() << endl;
+
+    cout << "REMOVENDO VALOR DO ÍNDICE 2:\n";
     lista.remover_em(2);
-    int tamanho2 = lista.tamanho();
-    for (int i = 0; i < tamanho2; i++){
+    for (unsigned int i = 0; i < lista.tamanho(); i++){
         cout << lista.get_em(i) << " ";
     }
-    return 0;
+    cout << "\n" <<"TAMANHO DA LISTA: "<< lista.tamanho() << endl;
+
+    cout << "INSERINDO VALOR NO ÍNDICE 5:\n";
+    lista.inserir_em(5,77);
+    for (unsigned int i = 0; i < lista.tamanho(); i++){
+        cout << lista.get_em(i) << " ";
+    }
+    cout << "\n" <<"TAMANHO DA LISTA: "<< lista.tamanho() << endl;
+
+    cout << "APAGANDO PRIMEIRO E ÚLTIMO ELEMENTO\n";
+    lista.apagar_inicio();
+    lista.apagar_final();
+    for (unsigned int i = 0; i < lista.tamanho(); i++){
+        cout << lista.get_em(i) << " ";
+    }
+    cout << "\n" <<"TAMANHO DA LISTA: "<< lista.tamanho() << endl;
+
+    cout << "PRIMEIRO E ÚLTIMO ELEMENTO:\n";
+    cout << lista.inicio() << " " << lista.final() << endl;
+
+    cout << "REMOVENDO O 77:\n";
+    lista.remover(77);
+    for (unsigned int i = 0; i < lista.tamanho(); i++){
+        cout << lista.get_em(i) << " ";
+    }
+    cout << "\n" <<"TAMANHO DA LISTA: "<< lista.tamanho() << endl;
+
+    cout << lista.contar(5) << endl;
+    lista.remover(5);
+    cout << lista.contar(5) << endl;
+
+    cout << "SOMA DOS ELEMENTOS: " << lista.soma();
+
 }
