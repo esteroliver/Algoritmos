@@ -5,9 +5,16 @@ using namespace std;
 
 int main(){
     lista_ligada lista;
-    for (int i = 1; i <= 10; i++){
-        lista.inserir_final(i);
-    }
+    lista.inserir_final(1);
+    lista.inserir_final(2);
+    lista.inserir_final(3);
+    lista.inserir_final(4);
+    lista.inserir_final(5);
+    lista.inserir_final(6);
+    lista.inserir_final(7);
+    lista.inserir_final(8);
+    lista.inserir_final(9);
+    lista.inserir_final(10);
 
     cout << "LISTA:\n";
     for (unsigned int i = 0; i < lista.tamanho(); i++){
@@ -47,5 +54,11 @@ int main(){
     }
     cout << "\n" <<"TAMANHO DA LISTA: "<< lista.tamanho() << endl;
 
+    cout << lista.contar(5) << endl;
+    lista.remover(5);
+    cout << lista.contar(5) << endl;
+
     cout << "SOMA DOS ELEMENTOS: " << lista.soma();
+
+    
 }

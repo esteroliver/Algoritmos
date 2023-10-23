@@ -5,7 +5,7 @@ class lista_ligada{
     private:
         struct no_int{
             int valor;
-            no_int  *proximo, *anterior;
+            struct no_int  *proximo, *anterior;
         };
         no_int *primeiro, *ultimo;
         unsigned int tamanho_;
@@ -91,6 +91,7 @@ class lista_ligada{
             if (!encontrar(valor)){
                 no_int *novo_valor = new no_int;
                 novo_valor->valor = valor;
+                novo_valor->proximo = nullptr;
                 novo_valor->anterior = this->ultimo;
                 if(this->primeiro == nullptr){
                     this->primeiro = novo_valor;
@@ -107,6 +108,7 @@ class lista_ligada{
                 no_int *novo_valor = new no_int;
                 novo_valor->valor = valor;
                 novo_valor->proximo = this->primeiro;
+                novo_valor->anterior = nullptr;
                 if(this->ultimo == nullptr){
                     this->ultimo = novo_valor;
                 }
@@ -119,23 +121,35 @@ class lista_ligada{
         }
         bool apagar_final(){
             if (tamanho_ > 0){
-                no_int *apagar = new no_int;
+                no_int *apagar;
                 apagar = this->ultimo;
                 this->ultimo = this->ultimo->anterior;
                 delete apagar;
+                this->ultimo->proximo = nullptr;
                 tamanho_--;
                 return true;
+            }
+            if (primeiro == ultimo){
+                delete primeiro;
+                primeiro = nullptr;
+                ultimo = nullptr;
             }
             return false;
         }
         bool apagar_inicio(){
             if (tamanho_ > 0){
-                no_int *apagar = new no_int;
+                no_int *apagar;
                 apagar = this->primeiro;
                 this->primeiro = this->primeiro->proximo;
                 delete apagar;
+                this->primeiro->anterior = nullptr;
                 tamanho_--;
                 return true;
+            }
+            if (primeiro == ultimo){
+                delete primeiro;
+                primeiro = nullptr;
+                ultimo = nullptr;
             }
             return false;
         }
@@ -166,7 +180,7 @@ class lista_ligada{
             no_int *valor_no = this->primeiro;
             for (int i = 0; i < tamanho_; i++){
                 if (valor_no->valor == valor) return true;
-                else valor_no = valor_no->proximo;
+                valor_no = valor_no->proximo;
             }
             return false;
         }
@@ -176,7 +190,7 @@ class lista_ligada{
         }
         int soma(){
             int total = 0;
-            no_int *percorrer = new no_int;
+            no_int *percorrer;
             percorrer = this->primeiro;
             for (int i = 0; i < tamanho_; i++){
                 total += percorrer->valor;
