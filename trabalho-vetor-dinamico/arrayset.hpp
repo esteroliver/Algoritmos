@@ -35,7 +35,7 @@ class array_set{
         }
 
         bool inserir_em(unsigned int index, int valor){
-            if (index < tamanho_ && !encontrar(valor)){
+            if (index < tamanho_){
                 for (int i = tamanho_; i > index; i--){
                     data[i] = data[i-1];
                 }
@@ -63,18 +63,14 @@ class array_set{
             tamanho_ = 0;
         }
         void inserir_final(int valor){
-           if (tamanho_ == capacidade_) incrementar();
-           if (!encontrar(valor)){
-                data[tamanho_] = valor;
-                tamanho_++;
-           }
+            if (tamanho_ == capacidade_) incrementar();
+            data[tamanho_] = valor;
+            tamanho_++;
         }
         void inserir_inicio(int valor){
             if (tamanho_ == capacidade_) incrementar();
-            if (!encontrar(valor)){
-                for (int i = tamanho_; i > 0; i--)
-                    data[i] = data[i-1];           
-            }
+            for (int i = tamanho_; i > 0; i--)
+                data[i] = data[i-1];           
             data[0] = valor;
             tamanho_++; 
         }
@@ -113,15 +109,18 @@ class array_set{
             }
             return false;
         }
-        bool encontrar(int valor){
+        int encontrar(int valor){
             for (int i = 0; i<tamanho_; i++){
-                if (valor == this->data[i]) return true;
+                if (valor == this->data[i]) return i;
             }
-            return false;
+            return -1;
         }
         int contar(int valor){
-            if (encontrar(valor)) return 1;
-            else return 0;
+            int quant = 0;
+            for (int i = 0; i < tamanho_; i++){
+                if (data[i] == valor) quant++;
+            }
+            return quant;
         }
         int soma(){
             int soma = 0;

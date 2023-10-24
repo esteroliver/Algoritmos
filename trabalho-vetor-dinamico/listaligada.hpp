@@ -29,7 +29,7 @@ class lista_ligada{
         }
 
         bool inserir_em(unsigned int index, int valor){
-            if (index < tamanho_ && !encontrar(valor)){ 
+            if (index < tamanho_){ 
                 no_int *novo_no = new no_int;
                 novo_no->valor = valor;
                 no_int *inserir_valor;
@@ -88,36 +88,32 @@ class lista_ligada{
             tamanho_ = 0;
         }
         void inserir_final(int valor){
-            if (!encontrar(valor)){
-                no_int *novo_valor = new no_int;
-                novo_valor->valor = valor;
-                novo_valor->proximo = nullptr;
-                novo_valor->anterior = this->ultimo;
-                if(this->primeiro == nullptr){
-                    this->primeiro = novo_valor;
-                }
-                else{
-                    this->ultimo->proximo = novo_valor;
-                }
-                this->ultimo = novo_valor;
-                this->tamanho_++;
+            no_int *novo_valor = new no_int;
+            novo_valor->valor = valor;
+            novo_valor->proximo = nullptr;
+            novo_valor->anterior = this->ultimo;
+            if(this->primeiro == nullptr){
+                this->primeiro = novo_valor;
             }
+            else{
+                this->ultimo->proximo = novo_valor;
+            }
+            this->ultimo = novo_valor;
+            this->tamanho_++;
         }
         void inserir_inicio(int valor){
-            if (!encontrar(valor)){
-                no_int *novo_valor = new no_int;
-                novo_valor->valor = valor;
-                novo_valor->proximo = this->primeiro;
-                novo_valor->anterior = nullptr;
-                if(this->ultimo == nullptr){
-                    this->ultimo = novo_valor;
-                }
-                else{
-                    this->primeiro->anterior = novo_valor;
-                }
-                this->primeiro = novo_valor;
-                this->tamanho_++;
+            no_int *novo_valor = new no_int;
+            novo_valor->valor = valor;
+            novo_valor->proximo = this->primeiro;
+            novo_valor->anterior = nullptr;
+            if(this->ultimo == nullptr){
+                this->ultimo = novo_valor;
             }
+            else{
+                this->primeiro->anterior = novo_valor;
+            }
+            this->primeiro = novo_valor;
+            this->tamanho_++;
         }
         bool apagar_final(){
             if (tamanho_ > 0){
@@ -178,17 +174,22 @@ class lista_ligada{
             }
             return false;
         }
-        bool encontrar(int valor){
+        int encontrar(int valor){
             no_int *valor_no = this->primeiro;
             for (int i = 0; i < tamanho_; i++){
-                if (valor_no->valor == valor) return true;
+                if (valor_no->valor == valor) return i;
                 valor_no = valor_no->proximo;
             }
-            return false;
+            return -1;
         }
         int contar(int valor){
-            if (encontrar(valor)) return 1;
-            else return 0;
+            int quant = 0;
+            no_int no = this->primeiro;
+            for (int i = 0; i < tamanho_; i++){
+                if (no->valor == valor) quant++;
+                no = no->proximo;
+            }
+            return quant;
         }
         int soma(){
             int total = 0;
