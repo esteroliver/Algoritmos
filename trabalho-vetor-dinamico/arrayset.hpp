@@ -50,6 +50,7 @@ class array_set{
                 for (int i = index; i < tamanho_; i++){
                     data[i] = data[i+1];
                 }
+                tamanho_--;
                 return true;
             }
             return false;

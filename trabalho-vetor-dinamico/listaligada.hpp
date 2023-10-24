@@ -129,6 +129,7 @@ class lista_ligada{
                 delete primeiro;
                 primeiro = nullptr;
                 ultimo = nullptr;
+                tamanho_ = 0;
                 return true;
             }
             return false;
@@ -147,6 +148,7 @@ class lista_ligada{
                 delete primeiro;
                 primeiro = nullptr;
                 ultimo = nullptr;
+                tamanho_ = 0;
                 return true;
             }
             return false;
