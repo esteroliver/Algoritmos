@@ -186,7 +186,7 @@ class lista_ligada{
         }
         int contar(int valor){
             int quant = 0;
-            no_int no = this->primeiro;
+            no_int *no = this->primeiro;
             for (int i = 0; i < tamanho_; i++){
                 if (no->valor == valor) quant++;
                 no = no->proximo;
