@@ -116,7 +116,7 @@ class lista_ligada{
             this->tamanho_++;
         }
         bool apagar_final(){
-            if (tamanho_ > 0){
+            if (tamanho_ > 1){
                 no_int *apagar;
                 apagar = this->ultimo;
                 this->ultimo = this->ultimo->anterior;
@@ -135,7 +135,7 @@ class lista_ligada{
             return false;
         }
         bool apagar_inicio(){
-            if (tamanho_ > 0){
+            if (tamanho_ > 1){
                 no_int *apagar;
                 apagar = this->primeiro;
                 this->primeiro = this->primeiro->proximo;
