@@ -10,25 +10,26 @@ class lista_ligada{
         no_int *primeiro, *ultimo;
         unsigned int tamanho_;
     public:
-        lista_ligada(){
+        lista_ligada(){ // Construtor do vetor. Desempenho O(1).
             this->primeiro = nullptr;
             this->ultimo = nullptr;
             this->tamanho_ = 0;
         }
-        ~lista_ligada(){
+        ~lista_ligada(){ // Destrutor do vetor. Desempenho O(n).
             limpar();
         }
-        unsigned int tamanho(){
+        unsigned int tamanho(){ // Retorna o tamanho do vetor. Desempenho O(1).
             return tamanho_;
         }
-        unsigned int capacidade(){
+        unsigned int capacidade(){ 
             return tamanho_;
         }
         double porcentagem_ocupada(){
+            if (tamanho_ == 0) return 0.0;
             return 1.0;
         }
 
-        bool inserir_em(unsigned int index, int valor){
+        bool inserir_em(unsigned int index, int valor){ // Insere um valor em um índice específico. Desempenho O(n).
             if (index < tamanho_){ 
                 no_int *novo_no = new no_int;
                 novo_no->valor = valor;
@@ -47,7 +48,7 @@ class lista_ligada{
             }
             return false;
         }
-        bool remover_em(unsigned int index){
+        bool remover_em(unsigned int index){ // Remove um valor em um índice específico. Desempenho O(n).
             if(index < tamanho_){
                 no_int *atual = new no_int;
                 atual = this->primeiro;
@@ -64,7 +65,7 @@ class lista_ligada{
             }
             return false;
         }
-        int get_em(unsigned int index){
+        int get_em(unsigned int index){ // Retorna um valor de um índice. Desempenho O(n).
             if (index < tamanho_){
                 no_int *atual;
                 atual = this->primeiro;
@@ -78,7 +79,7 @@ class lista_ligada{
             else return -1;
         }
 
-        void limpar(){
+        void limpar(){ // Limpa todos os elementos do vetor. Desempenho O(n).
             no_int *atual = this->primeiro;
             while(atual != nullptr){
                 no_int *remover = atual;
@@ -87,7 +88,7 @@ class lista_ligada{
             }
             tamanho_ = 0;
         }
-        void inserir_final(int valor){
+        void inserir_final(int valor){ // Insere um valor ao final da lista. Desempenho O(1).
             no_int *novo_valor = new no_int;
             novo_valor->valor = valor;
             novo_valor->proximo = nullptr;
@@ -101,7 +102,7 @@ class lista_ligada{
             this->ultimo = novo_valor;
             this->tamanho_++;
         }
-        void inserir_inicio(int valor){
+        void inserir_inicio(int valor){ // Insere um valor ao inicio da lista. Desempenho O(1).
             no_int *novo_valor = new no_int;
             novo_valor->valor = valor;
             novo_valor->proximo = this->primeiro;
@@ -115,7 +116,7 @@ class lista_ligada{
             this->primeiro = novo_valor;
             this->tamanho_++;
         }
-        bool apagar_final(){
+        bool apagar_final(){ // Apaga o último elemento do vetor. Desempenho O(1).
             if (tamanho_ > 1){
                 no_int *apagar;
                 apagar = this->ultimo;
@@ -134,7 +135,7 @@ class lista_ligada{
             }
             return false;
         }
-        bool apagar_inicio(){
+        bool apagar_inicio(){ // Apaga o primeiro elemento do vetor. Desempenho O(1).
             if (tamanho_ > 1){
                 no_int *apagar;
                 apagar = this->primeiro;
@@ -153,13 +154,13 @@ class lista_ligada{
             }
             return false;
         }
-        int final(){
+        int final(){ // Retorna o valor do último elemento. Desempenho O(1).
             return this->ultimo->valor;
         }
-        int inicio(){
+        int inicio(){ // Retorna o valor do primeiro elemento. Desempenho O(1).
             return this->primeiro->valor;
         }
-        bool remover(int valor){
+        bool remover(int valor){ // Remove um elemento do vetor. Desempenho O(n).
             no_int *percorrer;
             percorrer = this->primeiro;
             for (int i = 0; i < tamanho_; i++){
@@ -176,7 +177,7 @@ class lista_ligada{
             }
             return false;
         }
-        int encontrar(int valor){
+        int encontrar(int valor){ // Encontra o índice de um elemento do vetor. Desempenho O(n).
             no_int *valor_no = this->primeiro;
             for (int i = 0; i < tamanho_; i++){
                 if (valor_no->valor == valor) return i;
@@ -184,7 +185,7 @@ class lista_ligada{
             }
             return -1;
         }
-        int contar(int valor){
+        int contar(int valor){ // Retorna a quantidade de vezes que um elemento se repete no vetor. Desempenho O(n).
             int quant = 0;
             no_int *no = this->primeiro;
             for (int i = 0; i < tamanho_; i++){
@@ -193,7 +194,7 @@ class lista_ligada{
             }
             return quant;
         }
-        int soma(){
+        int soma(){ // Retorna a soma de todos os elementos do vetor. Desempenho O(n).
             int total = 0;
             no_int *percorrer;
             percorrer = this->primeiro;
