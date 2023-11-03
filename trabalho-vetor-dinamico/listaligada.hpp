@@ -86,6 +86,8 @@ class lista_ligada{
                 atual = atual->proximo;
                 delete remover;
             }
+            primeiro = nullptr;
+            ultimo = nullptr;
             tamanho_ = 0;
         }
         void inserir_final(int valor){ // Insere um valor ao final da lista. Desempenho O(1).

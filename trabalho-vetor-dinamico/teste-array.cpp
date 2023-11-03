@@ -1,10 +1,10 @@
 #include <iostream>
-#include "listaligada.hpp"
+#include "arrayset.hpp"
 
 using namespace std;
 
 int main(){
-    lista_ligada l1;
+    array_set l1;
     cout << "Tamanho inicial da lista 1: " << l1.tamanho() << endl;
 
     for (int i = 0; i < 10; i++){
@@ -18,7 +18,7 @@ int main(){
     cout << "Capacidade atual da lista 1: " << l1.capacidade() << endl;
     cout << "Porcentagem ocupada da lista 1: " << l1.porcentagem_ocupada() << endl;
 
-    lista_ligada l2;
+    array_set l2;
     for(int j = 10; j < 20; j++){
         l2.inserir_final(j+1);
     }
@@ -71,7 +71,7 @@ int main(){
 
     cout << l1.encontrar(4) << endl;
 
-    lista_ligada l3;
+    array_set l3;
     for (int i = 0; i< 10; i++){
         l3.inserir_final(5);
     }
