@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 int encontrar(vector<int> a, int tamanho, int valor){
     for (int i = 0; i < tamanho; i++){
         if(a[i] == valor) return i;
@@ -37,7 +36,7 @@ int main(){
         if (soma < s) x++;
         if (soma > s) y--;
     }
-    string resp = "IMPOSSIVEL";
+    string resp = "IMPOSSIBLE";
     if (resposta) cout << ind1 << " " << ind2 << endl;
     else cout << resp << endl;
     
