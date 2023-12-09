@@ -3,17 +3,17 @@
 using namespace std;
 
 bool labirinto2(int labirinto[8][10], int linha, int coluna, int l, int c){
-    if (l < 0 || c < 0 || l >= linha || c >= coluna || labirinto[l][c] == 1) return false;
+    if (l < 0 || c < 0 || l >= linha || c >= coluna || labirinto[l][c] != 0) return false;
     if (l == linha-1 && c == coluna-1) return true;
     labirinto[l][c] = 5;
     bool ans = false;
-    ans = labirinto1(labirinto, linha, coluna, l+1, c);
+    ans = labirinto2(labirinto, linha, coluna, l+1, c);
     if (ans == false)
-        ans = labirinto1(labirinto, linha, coluna, l, c+1);
+        ans = labirinto2(labirinto, linha, coluna, l, c+1);
     if (ans == false)
-        ans = labirinto1(labirinto, linha, coluna, l-1, c);
+        ans = labirinto2(labirinto, linha, coluna, l-1, c);
     if (ans == false)
-        ans = labirinto1(labirinto, linha, coluna, l, c-1);
+        ans = labirinto2(labirinto, linha, coluna, l, c-1);
     labirinto[l][c] = 0;
     return ans;
 }
